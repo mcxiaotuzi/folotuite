@@ -1,0 +1,15 @@
+{
+  "name": "socialdata-folo-webhook",
+  "version": "1.0.0",
+  "main": "webhook.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.9"
+  },
+  "scripts": {
+    "start": "node webhook.js"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
