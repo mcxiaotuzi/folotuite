@@ -1,5 +1,5 @@
 const express = require('express');
-const fetch = require('node-fetch');  // 添加这行
+const fetch = require('node-fetch');
 const app = express();
 
 // 环境变量配置
@@ -19,10 +19,11 @@ app.post('/api/webhook', async (req, res) => {
         }
 
         const tweetData = req.body.data;
+        const timestamp = Date.now(); // 添加时间戳
         
-        // 构建发送到Folo的数据
+        // 构建发送到Folo的数据，在guid中添加时间戳
         const foloPayload = {
-            guid: `twitter-${tweetData.id_str}`,
+            guid: `twitter-${tweetData.id_str}-${timestamp}`,
             publishedAt: tweetData.tweet_created_at,
             title: `${tweetData.user.name} on Twitter`,
             content: tweetData.full_text || tweetData.text,
